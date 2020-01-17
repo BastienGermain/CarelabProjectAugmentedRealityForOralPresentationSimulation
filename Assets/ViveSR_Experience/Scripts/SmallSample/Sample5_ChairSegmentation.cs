@@ -177,13 +177,19 @@ namespace Vive.Plugin.SR.Experience
                                     foreach (ViveSR_Experience_Chair MR_Chair in MR_Chairs)
                                     {
                                         avatar = Instantiate(sittingbis, MR_Chair.transform.localPosition - new Vector3(0, MR_Chair.transform.localPosition.y, 0), MR_Chair.transform.rotation) as GameObject;
+                                        avatar.transform.parent = GameObject.Find("Focus Sample").transform;
                                         Animator animator = avatar.GetComponent<Animator>();
 
                                         animator.runtimeAnimatorController = Resources.Load("Sitting_audience") as RuntimeAnimatorController;
+                                        CapsuleCollider collider = avatar.AddComponent(typeof(CapsuleCollider)) as CapsuleCollider;
+                                        collider.center = new Vector3 (0, 1.0f, 0);
+                                        collider.radius = 0.5f;
+                                        collider.height = 1.5f;
+                                        avatar.layer = LayerMask.NameToLayer("Avatar");
                                     }
 
 
-                                        SetColor(Color.white, ScanText, PlayText);
+                                    SetColor(Color.white, ScanText, PlayText);
                                     isPlaying = false;
                                     ActionSequence.ActionFinished();
                                 });

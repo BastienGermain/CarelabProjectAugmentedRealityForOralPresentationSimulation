@@ -372,6 +372,12 @@ namespace ViveSR
                     {
                         focusInfo = new FocusInfo();
                     }
+
+                    if (focusInfo.collider)
+                    {
+                        Debug.Log("You are looking at John !");
+                    }
+
                     return valid;
                 }
 
