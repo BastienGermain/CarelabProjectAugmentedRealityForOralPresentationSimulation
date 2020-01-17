@@ -1,4 +1,11 @@
-﻿using UnityEngine;using UnityEngine.UI;using System.Linq;namespace Vive.Plugin.SR.Experience{    public class ViveSR_Experience_Tutorial_InputHandler_Calibration : ViveSR_Experience_Tutorial_IInputHandler    {
+using UnityEngine;
+using UnityEngine.UI;
+using System.Linq;
+
+namespace Vive.Plugin.SR.Experience
+{
+    public class ViveSR_Experience_Tutorial_InputHandler_Calibration : ViveSR_Experience_Tutorial_IInputHandler
+    {
         ViveSR_Experience_Calibration calibrationScript;
 
         protected override void StartToDo()
@@ -7,7 +14,8 @@
             calibrationScript = ViveSR_Experience_Demo.instance.CalibrationScript;
         }
 
-        public override void Touched(Vector2 touchpad)        {
+        public override void Touched(Vector2 touchpad)
+        {
             if (calibrationScript.hasSpinningReset) //Only when spinning
             {    
                 tutorial.currentInput = ControllerInputIndex.none;
@@ -32,13 +40,17 @@
                 ResetSpinnerImages();
                 tutorial.SetTouchpadSprite(true, ControllerInputIndex.mid);
             }
-        }        protected override void LeftRightPressedDown()
+        }
+
+        protected override void LeftRightPressedDown()
         {
             if (!calibrationScript.isCalibrating)
             {
                 base.LeftRightPressedDown();
             }
-        }        public override void PressedDown()
+        }
+
+        public override void PressedDown()
         {
             if (tutorial.currentInput == ControllerInputIndex.left || tutorial.currentInput == ControllerInputIndex.right)
             {
@@ -119,4 +131,5 @@
             }
             tutorial.targetSpinnerImageNumber_Prev = tutorial.targetSpinnerImageNumber;
         }
-    }}
+    }
+}

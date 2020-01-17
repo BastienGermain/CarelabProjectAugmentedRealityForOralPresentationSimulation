@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AvatarAnimation : MonoBehaviour {
-
+public class AnimationParameterManager : MonoBehaviour
+{
     Animator animator;
 
     void Start()
@@ -13,11 +13,11 @@ public class AvatarAnimation : MonoBehaviour {
 
     void Update()
     {
-      
+
     }
 
-    public void SetArmsCrossed(int value)
+    public void SetSleeping(int value)
     {
-        animator.SetInteger("Arms crossed", value);
+        animator.SetInteger("Sleeping", value);
     }
 }

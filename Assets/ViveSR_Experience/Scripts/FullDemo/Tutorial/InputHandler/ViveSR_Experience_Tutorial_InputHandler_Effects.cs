@@ -1,4 +1,9 @@
-﻿using System.Linq;namespace Vive.Plugin.SR.Experience{    public class ViveSR_Experience_Tutorial_InputHandler_Effects : ViveSR_Experience_Tutorial_IInputHandler    {
+using System.Linq;
+
+namespace Vive.Plugin.SR.Experience
+{
+    public class ViveSR_Experience_Tutorial_InputHandler_Effects : ViveSR_Experience_Tutorial_IInputHandler
+    {
         protected override void StartToDo()
         {
             Button = ViveSR_Experience_Demo.instance.ButtonScripts[MenuButton.Effects];
@@ -25,4 +30,6 @@
         {
             base.MidPressedDown();
             tutorial.SetCanvas(TextCanvas.onTrigger, ViveSR_Experience_Demo.instance.ButtonScripts[Button.ButtonType].isOn);
-        }    }}
+        }
+    }
+}
