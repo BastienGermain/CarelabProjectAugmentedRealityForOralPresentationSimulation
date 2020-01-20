@@ -6,7 +6,7 @@ public class MicrophoneManager : MonoBehaviour
 {
     private AudioClip microphoneInput;
     private bool microphoneInitialized;
-    private float waitTime = 7.0f;
+    private float waitTime = 2.0f;
     private float timer = 0.0f;
     private float maxLevelOverWaitTime = 0.0f;
     private int sampleWindow = 128;
@@ -20,31 +20,34 @@ public class MicrophoneManager : MonoBehaviour
         if (Microphone.devices.Length > 0)
         {
             microphoneInput = Microphone.Start(Microphone.devices[0], true, 999, 44100);
+            Debug.Log("Mic name : " + Microphone.devices[0]);
             microphoneInitialized = true;
         }
-
-        // display all mic names (if any)
-        foreach (var device in Microphone.devices)
-        {
-            Debug.Log("Mic name : " + device);
-        }
-
-        // find avatars
-        avatars = GameObject.FindGameObjectsWithTag("Avatar");
-        animationParameterManager = avatars[0].GetComponent<AnimationParameterManager>();
+        
     }
 
     void Update()
     {
-        if (microphoneInitialized)
+        if (avatars == null || avatars.Length == 0)
+        {
+            // find avatars
+            avatars = GameObject.FindGameObjectsWithTag("Avatar");
+        } 
+        else if (animationParameterManager == null)
+        {
+            // for now handle only one avatar
+            animationParameterManager = avatars[0].GetComponent<AnimationParameterManager>();
+        }
+
+        if (microphoneInitialized && animationParameterManager != null)
         {
             // update timer
             timer += Time.deltaTime;
 
             if (timer > waitTime)
             {
-                //Debug.Log(waitTime + " seconds elapsed");
-                //Debug.Log("level : " + maxLevelOverWaitTime);
+                Debug.Log(waitTime + " seconds elapsed");
+                Debug.Log("level : " + maxLevelOverWaitTime);
 
                 if (maxLevelOverWaitTime < threshold)
                 {
@@ -88,6 +91,8 @@ public class MicrophoneManager : MonoBehaviour
                 maxLevelOverSamples = wavePeak;
             }
         }
+        Debug.Log(Microphone.IsRecording(null));
+        Debug.Log(maxLevelOverSamples);
 
         return Mathf.Sqrt(Mathf.Sqrt(maxLevelOverSamples)); // returns level between 0 and 1        
     }

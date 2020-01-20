@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class OscReceiver : MonoBehaviour
 {
-    public GameObject armsIcons;
+    public GameObject armsRedIcon;
+    public GameObject armsGreenIcon;
+    public GameObject handsRedIcon;
+    public GameObject handsGreenIcon;
+    public GameObject shouldersRedIcon;
+    public GameObject shouldersGreenIcon;
     private OscServer server;
     private float waitTime = 5.0f;
     private float timer = 0.0f;
@@ -45,10 +50,10 @@ public class OscReceiver : MonoBehaviour
 
             if(isArmsCrossed)
             {
-                armsIcons.SetActive(true);
+                armsRedIcon.SetActive(true);
             } else
             {
-                armsIcons.SetActive(false);
+                armsRedIcon.SetActive(false);
             }
 
             // remove the recorded seconds
