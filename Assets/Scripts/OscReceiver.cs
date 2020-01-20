@@ -15,13 +15,15 @@ public class OscReceiver : MonoBehaviour
     private float waitTime = 5.0f;
     private float timer = 0.0f;
     private bool isArmsCrossed = false;
+    private bool isHandsInside = true;
+    private bool isShouldersAligned = true;
 
     void Start()
     {
         server = new OscServer(9100); // Port number        
         
         server.MessageDispatcher.AddCallback(
-            "/test", // OSC address
+            "/arms", // OSC address
             (string address, OscDataHandle data) =>
             {
                 //Debug.Log(string.Format("({0})", data.GetElementAsInt(0)));
@@ -35,7 +37,39 @@ public class OscReceiver : MonoBehaviour
                 }
             }
         );
-             
+
+        server.MessageDispatcher.AddCallback(
+            "/hands", // OSC address
+            (string address, OscDataHandle data) =>
+            {
+                //Debug.Log(string.Format("({0})", data.GetElementAsInt(0)));
+                if (data.GetElementAsInt(0) == 1)
+                {
+                    isHandsInside = true;
+                }
+                else
+                {
+                    isHandsInside = false;
+                }
+            }
+        );
+
+        server.MessageDispatcher.AddCallback(
+            "/shoulders", // OSC address
+            (string address, OscDataHandle data) =>
+            {
+                //Debug.Log(string.Format("({0})", data.GetElementAsInt(0)));
+                if (data.GetElementAsInt(0) == 1)
+                {
+                    isShouldersAligned = true;
+                }
+                else
+                {
+                    isShouldersAligned = false;
+                }
+            }
+        );
+
     }
 
     void Update()
@@ -48,12 +82,49 @@ public class OscReceiver : MonoBehaviour
             Debug.Log(waitTime + " seconds elapsed");
             Debug.Log("arms crossed : " + isArmsCrossed);
 
-            if(isArmsCrossed)
+            if (isArmsCrossed)
             {
                 armsRedIcon.SetActive(true);
-            } else
+                armsGreenIcon.SetActive(false);
+            }
+            else if (armsRedIcon.activeSelf)
             {
                 armsRedIcon.SetActive(false);
+                armsGreenIcon.SetActive(true);
+            } 
+            else if (armsGreenIcon.activeSelf)
+            {
+                armsGreenIcon.SetActive(false);
+            }
+
+            if (!isHandsInside)
+            {
+                handsRedIcon.SetActive(true);
+                handsGreenIcon.SetActive(false);
+            }
+            else if (handsRedIcon.activeSelf)
+            {
+                handsRedIcon.SetActive(false);
+                handsGreenIcon.SetActive(true);
+            }
+            else if (handsGreenIcon.activeSelf)
+            {
+                handsGreenIcon.SetActive(false);
+            }
+
+            if (!isShouldersAligned)
+            {
+                shouldersRedIcon.SetActive(true);
+                shouldersGreenIcon.SetActive(false);
+            }
+            else if (shouldersRedIcon.activeSelf)
+            {
+                shouldersRedIcon.SetActive(false);
+                shouldersGreenIcon.SetActive(true);
+            }
+            else if (shouldersGreenIcon.activeSelf)
+            {
+                shouldersGreenIcon.SetActive(false);
             }
 
             // remove the recorded seconds
