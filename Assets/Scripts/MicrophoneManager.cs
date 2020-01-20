@@ -6,7 +6,7 @@ public class MicrophoneManager : MonoBehaviour
 {
     private AudioClip microphoneInput;
     private bool microphoneInitialized;
-    private float waitTime = 2.0f;
+    private float waitTime = 7.0f;
     private float timer = 0.0f;
     private float maxLevelOverWaitTime = 0.0f;
     private int sampleWindow = 128;
@@ -91,8 +91,6 @@ public class MicrophoneManager : MonoBehaviour
                 maxLevelOverSamples = wavePeak;
             }
         }
-        Debug.Log(Microphone.IsRecording(null));
-        Debug.Log(maxLevelOverSamples);
 
         return Mathf.Sqrt(Mathf.Sqrt(maxLevelOverSamples)); // returns level between 0 and 1        
     }
