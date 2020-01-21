@@ -351,6 +351,8 @@ namespace ViveSR
                 /// <returns>Indicates whether the ray hits a collider.</returns>
                 public static bool Focus(GazeIndex index, out Ray ray, out FocusInfo focusInfo, float radius, float maxDistance, int focusableLayer, EyeData eye_data)
                 {
+                    GameObject lastSeenObject = GameObject.Find("LastSeenObject");
+
                     bool valid = GetGazeRay(index, out ray, eye_data);
                     if (valid)
                     {
@@ -379,8 +381,13 @@ namespace ViveSR
                         System.Random random = new System.Random();
                         int number = random.Next(1, 8);
                         animationParameterManager.SetTalking(number);
+                        lastSeenObject.GetComponent<LastSeenScript>().StorePrefab(focusInfo.transform.gameObject);
+                    } 
+                    else if (lastSeenObject.GetComponent<LastSeenScript>().IsStored())
+                    {
+                        AnimationParameterManager animationParameterManager = lastSeenObject.GetComponent<AnimationParameterManager>();
+                        animationParameterManager.SetTalking(0);
                     }
-
 
                     return valid;
                 }
