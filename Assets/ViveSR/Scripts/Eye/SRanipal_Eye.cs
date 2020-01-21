@@ -375,8 +375,12 @@ namespace ViveSR
 
                     if (focusInfo.collider)
                     {
-                        Debug.Log("You are looking at John !");
+                        AnimationParameterManager animationParameterManager = focusInfo.transform.gameObject.GetComponent<AnimationParameterManager>();
+                        System.Random random = new System.Random();
+                        int number = random.Next(1, 8);
+                        animationParameterManager.SetTalking(number);
                     }
+
 
                     return valid;
                 }
