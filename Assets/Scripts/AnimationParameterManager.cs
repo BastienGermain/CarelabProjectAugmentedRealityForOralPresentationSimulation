@@ -6,7 +6,10 @@ using System.Text.RegularExpressions;
 
 public class AnimationParameterManager : MonoBehaviour
 {
-    Animator animator;
+    private Animator animator;
+    private float timer = 0.0f;
+    private float waitTime = 1.0f;
+    private float attentionLevel = 1.0f;
 
     void Start()
     {
@@ -15,12 +18,29 @@ public class AnimationParameterManager : MonoBehaviour
 
     void Update()
     {
+        timer += Time.deltaTime;
 
+        if (timer > waitTime)
+        {
+            Debug.Log("attention " + attentionLevel);
+
+            if (attentionLevel < 0.5f)
+            {
+                animator.SetInteger("Sleeping", 1);
+            }
+            else
+            {
+                animator.SetInteger("Sleeping", 0);
+            }
+
+            attentionLevel -= 0.05f;            
+            timer = timer - waitTime;
+        }        
     }
 
-    public void SetSleeping(int value)
+    public void IncreaseAttention()
     {
-        animator.SetInteger("Sleeping", value);
+        attentionLevel = 1.0f;
     }
 
     public void SetTalking(int id)

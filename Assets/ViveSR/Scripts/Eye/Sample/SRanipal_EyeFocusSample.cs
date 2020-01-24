@@ -40,11 +40,12 @@ namespace ViveSR.anipal.Eye
             foreach (GazeIndex index in GazePriority)
             {
                 Ray GazeRay;
+                int dart_board_layer_id = LayerMask.NameToLayer("NoReflection");
                 bool eye_focus;
                 if (eye_callback_registered)
-                    eye_focus = SRanipal_Eye.Focus(index, out GazeRay, out FocusInfo, 0, MaxDistance, (1 << LayerMask.NameToLayer("Avatar")), eyeData);
+                    eye_focus = SRanipal_Eye.Focus(index, out GazeRay, out FocusInfo, 0, MaxDistance, (1 << dart_board_layer_id), eyeData);
                 else
-                    eye_focus = SRanipal_Eye.Focus(index, out GazeRay, out FocusInfo, 0, MaxDistance, (1 << LayerMask.NameToLayer("Avatar")));
+                    eye_focus = SRanipal_Eye.Focus(index, out GazeRay, out FocusInfo, 0, MaxDistance, (1 << dart_board_layer_id));
 
                 if (eye_focus)
                 {

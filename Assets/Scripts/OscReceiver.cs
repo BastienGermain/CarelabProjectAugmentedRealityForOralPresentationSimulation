@@ -79,7 +79,7 @@ public class OscReceiver : MonoBehaviour
 
         if (timer > waitTime)
         {
-            Debug.Log(waitTime + " seconds elapsed");
+            //Debug.Log(waitTime + " seconds elapsed");
             Debug.Log("arms crossed : " + isArmsCrossed);
 
             if (isArmsCrossed)

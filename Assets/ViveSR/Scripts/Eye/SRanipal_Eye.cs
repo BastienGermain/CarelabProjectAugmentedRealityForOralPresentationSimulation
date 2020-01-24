@@ -74,9 +74,9 @@ namespace ViveSR
                 /// <param name="openness">The openness value of an eye, clamped between 0 (fully closed) and 1 (fully open). </param>
                 /// <param name="eye_data">ViveSR.anipal.Eye.EyeData. </param>
                 /// <returns>Indicates whether the openness value received is valid.</returns>
-                public static bool GetEyeOpenness(EyeIndex eye, out float openness,EyeData eye_data)
+                public static bool GetEyeOpenness(EyeIndex eye, out float openness, EyeData eye_data)
                 {
-					bool valid = true;
+                    bool valid = true;
                     if (SRanipal_Eye_Framework.Status == SRanipal_Eye_Framework.FrameworkStatus.WORKING)
                     {
                         SingleEyeData eyeData = eye == EyeIndex.LEFT ? eye_data.verbose_data.left : eye_data.verbose_data.right;
@@ -89,7 +89,7 @@ namespace ViveSR
                         openness = 1;
                     }
                     return valid;
-                }                
+                }
 
                 /// <summary>
                 /// Gets the openness value of an eye.
@@ -110,7 +110,8 @@ namespace ViveSR
                 /// <param name="eye_data">ViveSR.anipal.Eye.EyeData. </param>
                 /// <returns>Indicates whether the values received are new.</returns>\
                 /// 
-                public static bool GetEyeWeightings(out Dictionary<EyeShape, float> shapes, EyeData eye_data) {
+                public static bool GetEyeWeightings(out Dictionary<EyeShape, float> shapes, EyeData eye_data)
+                {
                     float[] openness = new float[2];
                     bool[] valid = new bool[2];
                     Vector2[] pupilPosition = new Vector2[2];
@@ -382,7 +383,7 @@ namespace ViveSR
                         int number = random.Next(1, 8);
                         animationParameterManager.SetTalking(number);
                         lastSeenObject.GetComponent<LastSeenScript>().StorePrefab(focusInfo.transform.gameObject);
-                    } 
+                    }
                     else if (lastSeenObject.GetComponent<LastSeenScript>().IsStored())
                     {
                         AnimationParameterManager animationParameterManager = lastSeenObject.GetComponent<AnimationParameterManager>();

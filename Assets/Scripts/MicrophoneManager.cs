@@ -6,7 +6,7 @@ public class MicrophoneManager : MonoBehaviour
 {
     private AudioClip microphoneInput;
     private bool microphoneInitialized;
-    private float waitTime = 7.0f;
+    private float waitTime = 5.0f;
     private float timer = 0.0f;
     private float maxLevelOverWaitTime = 0.0f;
     private int sampleWindow = 128;
@@ -46,15 +46,11 @@ public class MicrophoneManager : MonoBehaviour
 
             if (timer > waitTime)
             {
-                Debug.Log(waitTime + " seconds elapsed");
-                Debug.Log("level : " + maxLevelOverWaitTime);
+                Debug.Log("level after " + waitTime + " seconds : " + maxLevelOverWaitTime);
 
-                if (maxLevelOverWaitTime < threshold)
+                if (maxLevelOverWaitTime > threshold)
                 {
-                    animationParameterManager.SetSleeping(1);
-                } else
-                {
-                    animationParameterManager.SetSleeping(0);
+                    animationParameterManager.IncreaseAttention();
                 }
 
                 // remove the recorded seconds
