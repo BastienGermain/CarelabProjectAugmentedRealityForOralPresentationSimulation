@@ -15,4 +15,9 @@ public class LastSeenScript : MonoBehaviour {
 	{
 		return lastSeen ? true : false;
 	}
+
+    public GameObject GetLastSeen()
+    {
+        return lastSeen;
+    }
 }

@@ -22,7 +22,7 @@ public class AnimationParameterManager : MonoBehaviour
 
         if (timer > waitTime)
         {
-            Debug.Log("attention " + attentionLevel);
+            //Debug.Log("attention " + attentionLevel);
 
             if (attentionLevel < 0.5f)
             {
@@ -45,10 +45,7 @@ public class AnimationParameterManager : MonoBehaviour
 
     public void SetTalking(int id)
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Seated Idle"))
-        {
-            animator.SetInteger("Talking", id);
-        }       
+        animator.SetInteger("Talking", id);      
     }
 
 }
