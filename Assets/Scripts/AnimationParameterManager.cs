@@ -26,7 +26,7 @@ public class AnimationParameterManager : MonoBehaviour
 
             if (attentionLevel < 0.5f)
             {
-                animator.SetInteger("Sleeping", 1);
+                //animator.SetInteger("Sleeping", 1);
             }
             else
             {
