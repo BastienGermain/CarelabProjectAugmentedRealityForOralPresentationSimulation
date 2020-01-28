@@ -379,18 +379,11 @@ namespace ViveSR
                     if (focusInfo.collider)
                     {
                         AnimationParameterManager animationParameterManager = focusInfo.transform.gameObject.GetComponent<AnimationParameterManager>();
-                        animationParameterManager.SetTalking(0);
+                        animationParameterManager.IncreaseGazeAttention();
                         lastSeenObject.GetComponent<LastSeenScript>().StorePrefab(focusInfo.transform.gameObject);
                         Debug.Log("il devrait se taire");
                     }
-                    else if (lastSeenObject.GetComponent<LastSeenScript>().IsStored())
-                    {
-                        Debug.Log("il devrait parler");
-                        AnimationParameterManager animationParameterManager = lastSeenObject.GetComponent<LastSeenScript>().GetLastSeen().GetComponent<AnimationParameterManager>();
-                        System.Random random = new System.Random();
-                        int number = random.Next(1, 8);
-                        animationParameterManager.SetTalking(number);
-                    }
+                    
 
                     return valid;
                 }

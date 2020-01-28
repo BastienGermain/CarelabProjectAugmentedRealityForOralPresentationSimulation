@@ -50,7 +50,7 @@ public class MicrophoneManager : MonoBehaviour
 
                 if (maxLevelOverWaitTime > threshold)
                 {
-                    animationParameterManager.IncreaseAttention();
+                    animationParameterManager.IncreaseVoiceAttention();
                 }
 
                 // remove the recorded seconds
