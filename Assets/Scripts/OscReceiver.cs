@@ -134,7 +134,8 @@ public class OscReceiver : MonoBehaviour
 
     void OnDestroy()
     {
-        server.Dispose();
+        if(server != null)
+            server.Dispose();
     }
 }
 
