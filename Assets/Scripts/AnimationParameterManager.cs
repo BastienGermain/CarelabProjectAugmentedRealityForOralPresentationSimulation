@@ -11,6 +11,7 @@ public class AnimationParameterManager : MonoBehaviour
     private float waitTime = 1.0f;
     private float attentionVoiceLevel = 1.0f;
     private float attentionGazeLevel = 1.0f;
+    private bool sleeper;
 
     void Start()
     {
@@ -23,9 +24,8 @@ public class AnimationParameterManager : MonoBehaviour
 
         if (timer > waitTime)
         {
-            //Debug.Log("attention " + attentionLevel);
 
-            if (attentionVoiceLevel < 0.5f)
+            if (sleeper && attentionVoiceLevel < 0.5f)
             {
                 animator.SetInteger("Sleeping", 1);
             }
@@ -36,7 +36,7 @@ public class AnimationParameterManager : MonoBehaviour
 
             attentionVoiceLevel -= 0.05f;
 
-            if (attentionGazeLevel < 0.5f)
+            if (!sleeper && attentionGazeLevel < 0.5f)
             {
                 animator.SetInteger("Talking", 1);
             }
@@ -59,6 +59,11 @@ public class AnimationParameterManager : MonoBehaviour
     public void IncreaseGazeAttention()
     {
         attentionGazeLevel = 1.0f;
+    }
+
+    public void SetSleeper(bool value)
+    {
+        sleeper = value;
     }
 
 }

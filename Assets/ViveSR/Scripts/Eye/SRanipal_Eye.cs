@@ -381,7 +381,6 @@ namespace ViveSR
                         AnimationParameterManager animationParameterManager = focusInfo.transform.gameObject.GetComponent<AnimationParameterManager>();
                         animationParameterManager.IncreaseGazeAttention();
                         lastSeenObject.GetComponent<LastSeenScript>().StorePrefab(focusInfo.transform.gameObject);
-                        Debug.Log("il devrait se taire");
                     }
                     
 

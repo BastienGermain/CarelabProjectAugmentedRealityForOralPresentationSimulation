@@ -11,7 +11,7 @@ public class MicrophoneManager : MonoBehaviour
     private float maxLevelOverWaitTime = 0.0f;
     private int sampleWindow = 128;
     private float threshold = 0.8f;
-    private AnimationParameterManager animationParameterManager;
+    private List<AnimationParameterManager> animationParameterManagers;
     private GameObject[] avatars;
 
     void Start()
@@ -23,6 +23,8 @@ public class MicrophoneManager : MonoBehaviour
             Debug.Log("Mic name : " + Microphone.devices[0]);
             microphoneInitialized = true;
         }
+
+        animationParameterManagers = new List<AnimationParameterManager>();
         
     }
 
@@ -32,14 +34,17 @@ public class MicrophoneManager : MonoBehaviour
         {
             // find avatars
             avatars = GameObject.FindGameObjectsWithTag("Avatar");
-        } 
-        else if (animationParameterManager == null)
+        }
+        else if (animationParameterManagers == null || animationParameterManagers.Count == 0)
         {
             // for now handle only one avatar
-            animationParameterManager = avatars[0].GetComponent<AnimationParameterManager>();
+            foreach (GameObject avatar in avatars)
+            {
+                animationParameterManagers.Add(avatar.GetComponent<AnimationParameterManager>());
+            }
         }
 
-        if (microphoneInitialized && animationParameterManager != null)
+        if (microphoneInitialized && animationParameterManagers != null)
         {
             // update timer
             timer += Time.deltaTime;
@@ -50,7 +55,10 @@ public class MicrophoneManager : MonoBehaviour
 
                 if (maxLevelOverWaitTime > threshold)
                 {
-                    animationParameterManager.IncreaseVoiceAttention();
+                    foreach (AnimationParameterManager manager in animationParameterManagers)
+                    {
+                        manager.IncreaseVoiceAttention();
+                    }
                 }
 
                 // remove the recorded seconds

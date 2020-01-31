@@ -10,7 +10,9 @@ namespace Vive.Plugin.SR.Experience
         [SerializeField] protected Text ScanText, StopText, SaveText, PlayText, HintText;
 
         //ViveSR_Experience_NPCGenerator npcGenerator;
-        public GameObject sittingbis;
+        public GameObject sittingJohn;
+        public GameObject sittingBarbara;
+        public GameObject sittingJames;
 
         [SerializeField] GameObject VRChairGroup;
 
@@ -173,21 +175,43 @@ namespace Vive.Plugin.SR.Experience
                                 {
                                     HintText.text = "";
 
-                                    //if (MR_Chairs.Count > 0) npcGenerator.Play(MR_Chairs);
+                                    bool sleeper = false;
+                                    int avatarType = 0;
+                                    GameObject avatarPrefab;
+
                                     foreach (ViveSR_Experience_Chair MR_Chair in MR_Chairs)
                                     {
-                                        avatar = Instantiate(sittingbis, MR_Chair.transform.localPosition - new Vector3(0, MR_Chair.transform.localPosition.y, 0), MR_Chair.transform.rotation) as GameObject;
+                                        switch (avatarType)
+                                        {
+                                            case 0:
+                                                avatarPrefab = sittingJohn;
+                                                break;
+                                            case 1:
+                                                avatarPrefab = sittingBarbara;
+                                                break;
+                                            case 2:
+                                                avatarPrefab = sittingJames;
+                                                break;
+                                            default:
+                                                avatarPrefab = sittingJohn;
+                                                break;
+                                        }
+                                        avatar = Instantiate(avatarPrefab, MR_Chair.transform.localPosition - new Vector3(0, MR_Chair.transform.localPosition.y, 0), MR_Chair.transform.rotation) as GameObject;
                                         avatar.transform.parent = GameObject.Find("Focus Sample").transform;
                                         Animator animator = avatar.GetComponent<Animator>();
 
                                         animator.runtimeAnimatorController = Resources.Load("Sitting_audience") as RuntimeAnimatorController;
                                         CapsuleCollider collider = avatar.AddComponent(typeof(CapsuleCollider)) as CapsuleCollider;
                                         avatar.AddComponent(typeof(AnimationParameterManager));
+                                        avatar.GetComponent<AnimationParameterManager>().SetSleeper(sleeper);
                                         collider.center = new Vector3 (0, 1.0f, 0);
                                         collider.radius = 0.5f;
                                         collider.height = 1.0f;
                                         avatar.layer = LayerMask.NameToLayer("Avatar");
                                         avatar.tag = "Avatar";
+
+                                        sleeper = !sleeper;
+                                        avatarType++;
                                     }
 
 

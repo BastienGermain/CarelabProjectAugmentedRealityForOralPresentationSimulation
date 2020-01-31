@@ -803,7 +803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &737248436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -932,7 +932,9 @@ MonoBehaviour:
   SaveText: {fileID: 467634266}
   PlayText: {fileID: 2091006973}
   HintText: {fileID: 1218936939}
-  sittingbis: {fileID: 100008, guid: 5813a643651ca614a9535b6fc4f93e6a, type: 3}
+  sittingJohn: {fileID: 100008, guid: 5813a643651ca614a9535b6fc4f93e6a, type: 3}
+  sittingBarbara: {fileID: 100006, guid: c6fe4413fa82b1a458ac97c92272267d, type: 3}
+  sittingJames: {fileID: 100004, guid: bd35beba0f007e5418fcd2eaf2a5bbc7, type: 3}
   VRChairGroup: {fileID: 1577403504}
 --- !u!114 &933323756
 MonoBehaviour:
