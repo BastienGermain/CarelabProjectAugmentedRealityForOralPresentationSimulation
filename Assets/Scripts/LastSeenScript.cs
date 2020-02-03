@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Store last game object seen by eye tracking
 public class LastSeenScript : MonoBehaviour {
 
 	private GameObject lastSeen;

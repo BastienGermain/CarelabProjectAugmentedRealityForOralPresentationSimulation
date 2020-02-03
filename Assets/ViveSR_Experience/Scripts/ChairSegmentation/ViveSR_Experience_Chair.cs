@@ -18,7 +18,6 @@ namespace Vive.Plugin.SR.Experience
             NaveMeshObstacle.center = new Vector3(0f, 0f, -0.2f);
         }
 
-
         public void SetOccupier(bool isOccupied, ViveSR_Experience_NPCAnimationRef OccupyingNPC = null)
         {
             ViveSR_Experience_NPCAnimationRef OldNPC = OccupyingNPC;

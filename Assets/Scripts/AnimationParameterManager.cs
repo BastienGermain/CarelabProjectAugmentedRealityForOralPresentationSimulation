@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using System.Text.RegularExpressions;
 
 public class AnimationParameterManager : MonoBehaviour
 {
@@ -24,7 +22,6 @@ public class AnimationParameterManager : MonoBehaviour
 
         if (timer > waitTime)
         {
-
             if (sleeper && attentionVoiceLevel < 0.5f)
             {
                 animator.SetInteger("Sleeping", 1);
@@ -32,9 +29,7 @@ public class AnimationParameterManager : MonoBehaviour
             else
             {
                 animator.SetInteger("Sleeping", 0);
-            }
-
-            attentionVoiceLevel -= 0.05f;
+            }            
 
             if (!sleeper && attentionGazeLevel < 0.5f)
             {
@@ -45,6 +40,7 @@ public class AnimationParameterManager : MonoBehaviour
                 animator.SetInteger("Talking", 0);
             }
 
+            attentionVoiceLevel -= 0.05f;
             attentionGazeLevel -= 0.05f;
 
             timer = timer - waitTime;

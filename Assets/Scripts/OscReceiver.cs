@@ -42,7 +42,6 @@ public class OscReceiver : MonoBehaviour
             "/hands", // OSC address
             (string address, OscDataHandle data) =>
             {
-                //Debug.Log(string.Format("({0})", data.GetElementAsInt(0)));
                 if (data.GetElementAsInt(0) == 1)
                 {
                     isHandsInside = true;
@@ -58,7 +57,6 @@ public class OscReceiver : MonoBehaviour
             "/shoulders", // OSC address
             (string address, OscDataHandle data) =>
             {
-                //Debug.Log(string.Format("({0})", data.GetElementAsInt(0)));
                 if (data.GetElementAsInt(0) == 1)
                 {
                     isShouldersAligned = true;
@@ -96,8 +94,7 @@ public class OscReceiver : MonoBehaviour
             {
                 armsGreenIcon.SetActive(false);
             }
-
-            if (!isHandsInside)
+            else if (!isHandsInside)
             {
                 handsRedIcon.SetActive(true);
                 handsGreenIcon.SetActive(false);
@@ -111,8 +108,7 @@ public class OscReceiver : MonoBehaviour
             {
                 handsGreenIcon.SetActive(false);
             }
-
-            if (!isShouldersAligned)
+            else if (!isShouldersAligned)
             {
                 shouldersRedIcon.SetActive(true);
                 shouldersGreenIcon.SetActive(false);

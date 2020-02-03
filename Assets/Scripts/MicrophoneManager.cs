@@ -30,14 +30,13 @@ public class MicrophoneManager : MonoBehaviour
 
     void Update()
     {
+        // find avatars and get all animation managers
         if (avatars == null || avatars.Length == 0)
-        {
-            // find avatars
+        {            
             avatars = GameObject.FindGameObjectsWithTag("Avatar");
         }
         else if (animationParameterManagers == null || animationParameterManagers.Count == 0)
-        {
-            // for now handle only one avatar
+        {   
             foreach (GameObject avatar in avatars)
             {
                 animationParameterManagers.Add(avatar.GetComponent<AnimationParameterManager>());

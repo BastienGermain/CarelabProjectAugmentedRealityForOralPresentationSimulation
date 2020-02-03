@@ -196,6 +196,7 @@ namespace Vive.Plugin.SR.Experience
                                                 avatarPrefab = sittingJohn;
                                                 break;
                                         }
+
                                         avatar = Instantiate(avatarPrefab, MR_Chair.transform.localPosition - new Vector3(0, MR_Chair.transform.localPosition.y, 0), MR_Chair.transform.rotation) as GameObject;
                                         avatar.transform.parent = GameObject.Find("Focus Sample").transform;
                                         Animator animator = avatar.GetComponent<Animator>();
