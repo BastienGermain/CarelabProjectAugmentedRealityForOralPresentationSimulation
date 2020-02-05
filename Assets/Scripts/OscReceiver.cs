@@ -94,7 +94,8 @@ public class OscReceiver : MonoBehaviour
             {
                 armsGreenIcon.SetActive(false);
             }
-            else if (!isHandsInside)
+            
+            if (!isHandsInside && !isArmsCrossed)
             {
                 handsRedIcon.SetActive(true);
                 handsGreenIcon.SetActive(false);
@@ -108,7 +109,8 @@ public class OscReceiver : MonoBehaviour
             {
                 handsGreenIcon.SetActive(false);
             }
-            else if (!isShouldersAligned)
+            
+            if (!isShouldersAligned && isHandsInside && !isArmsCrossed)
             {
                 shouldersRedIcon.SetActive(true);
                 shouldersGreenIcon.SetActive(false);
