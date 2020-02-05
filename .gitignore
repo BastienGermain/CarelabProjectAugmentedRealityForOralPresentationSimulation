@@ -66,5 +66,4 @@ Version.txt
 /Assets/StreamingAssets/models/hand/pose_iter_102000.caffemodel
 /Assets/StreamingAssets/models/hand/pose_iter_102000.caffemodel.meta
 # SRWorks
-/Recons3DAsset/
 /Assets/ViveSR/Plugins/

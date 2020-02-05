@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ArrayOfElement>
+    <Element>
+        <tag>Chair</tag>
+        <id>0</id>
+        <objfilename>Chair_0.obj</objfilename>
+        <cldfilename>Chair_0_cld.obj</cldfilename>
+        <position>
+            <x>-1.89</x>
+            <y>0.53</y>
+            <z>-0.66</z>
+        </position>
+        <forward>
+            <x>0.995</x>
+            <y>0.000000</y>
+            <z>-0.097</z>
+        </forward>
+        <bBoxMinPoint>
+            <x>-2.220000</x>
+            <y>0.327193</y>
+            <z>-0.660000</z>
+        </bBoxMinPoint>
+        <bBoxMaxPoint>
+            <x>-1.520000</x>
+            <y>0.920000</y>
+            <z>-0.014831</z>
+        </bBoxMaxPoint>
+    </Element>
+</ArrayOfElement>
