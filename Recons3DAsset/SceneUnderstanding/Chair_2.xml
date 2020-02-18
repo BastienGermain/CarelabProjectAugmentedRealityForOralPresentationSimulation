@@ -6,14 +6,14 @@
         <objfilename>Chair_2.obj</objfilename>
         <cldfilename>Chair_2_cld.obj</cldfilename>
         <position>
-            <x>-1.67</x>
-            <y>0.567339</y>
-            <z>0.20</z>
+            <x>-4.06</x>
+            <y>0.467339</y>
+            <z>-1.9</z>
         </position>
         <forward>
-            <x>0.4948722204</x>
+            <x>1.0</x>
             <y>0.000000</y>
-            <z>-0.86896575621</z>
+            <z>-0.15</z>
         </forward>
         <bBoxMinPoint>
             <x>-1.754365</x>

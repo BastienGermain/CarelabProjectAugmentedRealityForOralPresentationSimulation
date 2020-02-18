@@ -12,6 +12,7 @@ public class OscReceiver : MonoBehaviour
     public GameObject shouldersRedIcon;
     public GameObject shouldersGreenIcon;
     private OscServer server;
+    private PointsManager manager;
     private float waitTime = 5.0f;
     private float timer = 0.0f;
     private bool isArmsCrossed = false;
@@ -20,6 +21,8 @@ public class OscReceiver : MonoBehaviour
 
     void Start()
     {
+        manager = GameObject.Find("PointsManager").GetComponent<PointsManager>();
+
         server = new OscServer(9100); // Port number        
         
         server.MessageDispatcher.AddCallback(
@@ -84,11 +87,13 @@ public class OscReceiver : MonoBehaviour
             {
                 armsRedIcon.SetActive(true);
                 armsGreenIcon.SetActive(false);
+                manager.AddPoints(-20);
             }
             else if (armsRedIcon.activeSelf)
             {
                 armsRedIcon.SetActive(false);
                 armsGreenIcon.SetActive(true);
+                manager.AddPoints(30);
             } 
             else if (armsGreenIcon.activeSelf)
             {
@@ -99,11 +104,13 @@ public class OscReceiver : MonoBehaviour
             {
                 handsRedIcon.SetActive(true);
                 handsGreenIcon.SetActive(false);
+                manager.AddPoints(-20);
             }
             else if (handsRedIcon.activeSelf)
             {
                 handsRedIcon.SetActive(false);
                 handsGreenIcon.SetActive(true);
+                manager.AddPoints(30);
             }
             else if (handsGreenIcon.activeSelf)
             {
@@ -114,11 +121,13 @@ public class OscReceiver : MonoBehaviour
             {
                 shouldersRedIcon.SetActive(true);
                 shouldersGreenIcon.SetActive(false);
+                manager.AddPoints(-20);
             }
             else if (shouldersRedIcon.activeSelf)
             {
                 shouldersRedIcon.SetActive(false);
                 shouldersGreenIcon.SetActive(true);
+                manager.AddPoints(30);
             }
             else if (shouldersGreenIcon.activeSelf)
             {

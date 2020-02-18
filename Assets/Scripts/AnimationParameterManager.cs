@@ -5,15 +5,17 @@ using UnityEngine;
 public class AnimationParameterManager : MonoBehaviour
 {
     private Animator animator;
+    private PointsManager manager;
     private float timer = 0.0f;
     private float waitTime = 1.0f;
     private float attentionVoiceLevel = 1.0f;
     private float attentionGazeLevel = 1.0f;
-    private bool sleeper;
+    private bool sleeper;    
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        manager = GameObject.Find("PointsManager").GetComponent<PointsManager>();
     }
 
     void Update()
@@ -25,19 +27,23 @@ public class AnimationParameterManager : MonoBehaviour
             if (sleeper && attentionVoiceLevel < 0.5f)
             {
                 animator.SetInteger("Sleeping", 1);
+                manager.AddPoints(-2);
             }
-            else
+            else if (sleeper)
             {
                 animator.SetInteger("Sleeping", 0);
+                manager.AddPoints(1);
             }            
 
             if (!sleeper && attentionGazeLevel < 0.5f)
             {
                 animator.SetInteger("Talking", 1);
+                manager.AddPoints(-2);
             }
-            else
+            else if (!sleeper)
             {
                 animator.SetInteger("Talking", 0);
+                manager.AddPoints(1);
             }
 
             attentionVoiceLevel -= 0.05f;
@@ -61,5 +67,4 @@ public class AnimationParameterManager : MonoBehaviour
     {
         sleeper = value;
     }
-
 }
