@@ -10,4 +10,4 @@ Follow [official documentation](https://developer.vive.com/resources/knowledgeba
 
 ## Detection
 
-[CarelabProjectAugmentedRealityForOralPresentation](https://github.com/BastienGermain/CarelabProjectAugmentedRealityForOralPresentation)
+See [CarelabProjectAugmentedRealityForOralPresentation](https://github.com/BastienGermain/CarelabProjectAugmentedRealityForOralPresentation)
