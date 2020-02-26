@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Class to receive OSC data from the OscSender in the Detection part
+// Class to receive OSC data from the BehaviourTracker in the Detection part
 
 public class OscReceiver : MonoBehaviour
 {
@@ -25,7 +25,7 @@ public class OscReceiver : MonoBehaviour
     {
         manager = GameObject.Find("PointsManager").GetComponent<PointsManager>();
 
-        server = new OscServer(9100); // Port number (needs to be identical to the one in OscSender in the Detection part)       
+        server = new OscServer(9100); // Port number (needs to be identical to the one in BehaviourTracker in the Detection part)       
         
         server.MessageDispatcher.AddCallback(
             "/arms", // OSC address
