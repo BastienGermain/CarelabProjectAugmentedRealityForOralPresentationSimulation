@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class to receive OSC data from the OscSender in the Detection part
+
 public class OscReceiver : MonoBehaviour
 {
     public GameObject armsRedIcon;
@@ -23,7 +25,7 @@ public class OscReceiver : MonoBehaviour
     {
         manager = GameObject.Find("PointsManager").GetComponent<PointsManager>();
 
-        server = new OscServer(9100); // Port number        
+        server = new OscServer(9100); // Port number (needs to be identical to the one in OscSender in the Detection part)       
         
         server.MessageDispatcher.AddCallback(
             "/arms", // OSC address
@@ -81,7 +83,7 @@ public class OscReceiver : MonoBehaviour
         if (timer > waitTime)
         {
             //Debug.Log(waitTime + " seconds elapsed");
-            Debug.Log("arms crossed : " + isArmsCrossed);
+            //Debug.Log("arms crossed : " + isArmsCrossed);
 
             if (isArmsCrossed)
             {

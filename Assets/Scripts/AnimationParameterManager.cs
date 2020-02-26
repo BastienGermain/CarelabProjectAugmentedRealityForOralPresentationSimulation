@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class attatched to the avatars to handle their animations
+
 public class AnimationParameterManager : MonoBehaviour
 {
     private Animator animator;
-    private PointsManager manager;
+    private PointsManager pointsManager;
     private float timer = 0.0f;
     private float waitTime = 1.0f;
     private float attentionVoiceLevel = 1.0f;
@@ -15,7 +17,7 @@ public class AnimationParameterManager : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        manager = GameObject.Find("PointsManager").GetComponent<PointsManager>();
+        pointsManager = GameObject.Find("PointsManager").GetComponent<PointsManager>();
     }
 
     void Update()
@@ -27,23 +29,23 @@ public class AnimationParameterManager : MonoBehaviour
             if (sleeper && attentionVoiceLevel < 0.5f)
             {
                 animator.SetInteger("Sleeping", 1);
-                manager.AddPoints(-2);
+                pointsManager.AddPoints(-2);
             }
             else if (sleeper)
             {
                 animator.SetInteger("Sleeping", 0);
-                manager.AddPoints(1);
+                pointsManager.AddPoints(1);
             }            
 
             if (!sleeper && attentionGazeLevel < 0.5f)
             {
                 animator.SetInteger("Talking", 1);
-                manager.AddPoints(-2);
+                pointsManager.AddPoints(-2);
             }
             else if (!sleeper)
             {
                 animator.SetInteger("Talking", 0);
-                manager.AddPoints(1);
+                pointsManager.AddPoints(1);
             }
 
             attentionVoiceLevel -= 0.05f;

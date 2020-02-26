@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
+// Simple class to manage point system
+
 public class PointsManager : MonoBehaviour
 {
 

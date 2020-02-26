@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+// Here have been made modification to the original ViveSR plugin
+
 namespace Vive.Plugin.SR.Experience
 {
     [RequireComponent(typeof(ViveSR_Experience))]
@@ -175,6 +177,10 @@ namespace Vive.Plugin.SR.Experience
                                 {
                                     HintText.text = "";
 
+                                    /********************************************************
+                                    ***** CARELAB PROJECT ADDITIONAL CODE START HERE ********
+                                    ********************************************************/
+
                                     bool sleeper = false;
                                     int avatarType = 0;
                                     GameObject avatarPrefab;
@@ -215,8 +221,9 @@ namespace Vive.Plugin.SR.Experience
                                         avatarType++;
                                     }
 
-
-
+                                    /*******************************************************
+                                    ***** CARELAB PROJECT ADDITIONAL CODE STOP HERE ********
+                                    *******************************************************/
 
                                     SetColor(Color.white, ScanText, PlayText);
                                     isPlaying = false;
